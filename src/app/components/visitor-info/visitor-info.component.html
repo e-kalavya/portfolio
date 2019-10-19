@@ -1,0 +1,19 @@
+<div class="visitor-container">
+    <form class="visitor-form" [formGroup]="visitorForm">
+        <mat-form-field>
+            <input matInput placeholder="Email ID" formControlName="emailId">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Country" formControlName="country" [matAutocomplete]="countryPanel">
+            <mat-autocomplete #countryPanel="matAutocomplete" [displayWith]="countrydisplay">
+                    <mat-option *ngFor="let country of filteredCountriesList | async" [value]="country">
+                      {{ country.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+        </mat-form-field>
+        <div class="actions">
+            <button mat-raised-button color="primary" (click)="saveInfo()" [disabled]="validate()">Save</button>
+            <button mat-raised-button (click)="sheetRef.dismiss()">Close</button>
+        </div>
+    </form>
+</div>

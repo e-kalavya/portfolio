@@ -1,0 +1,15 @@
+.visitor-container {
+    // background-color: whitesmoke;
+    margin-top: 10px;
+    .visitor-form {
+        text-align: center;
+        .mat-form-field {
+            width: 90%;
+        }
+        .actions {
+            .mat-raised-button {
+                margin: 0px 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+.mat-radio-group.skill-group {
+  .mat-radio-button {
+    margin-right: 20px;
+  }
+}
+
+::ng-deep p-slider .ui-slider {
+  &.red-yellow {
+    background-color: red;
+    span.ui-slider-range {
+      background-color: yellow;
+    }
+  }
+}
+
+
+.certificates-list .mat-expansion-panel {
+  margin: 20px;
+}
+
+ .mat-expansion-panel-header-title,
+ .mat-expansion-panel-header-description {
+  flex-basis: 0;
+  font-size: 125%;
+  font-weight: 700;
+  color: cadetblue;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.mat-grid-tile span.label,.mat-grid-tile span.value {
+  margin-right: auto;
+  font-size: 125%;
+}
+
+.mat-grid-tile span.value {
+  color: cadetblue;
+  font-weight: 600;
+}

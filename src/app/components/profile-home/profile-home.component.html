@@ -1,0 +1,30 @@
+<!-- <mat-grid-list [cols]="query.matches?1:3" [rowHeight]="query.matches?'2:1':'2:1'">
+    <mat-grid-tile rowspan="1" [colspan]="query.matches?1:3">
+      <ngx-carousel (onMove)="move($event)" #carouselRef [inputs]="myCarousel">
+        <ngx-item *ngFor="let banner of bannerConfig" NgxCarouselItem>
+          <div *ngIf="(!query.matches && (banner.deviceTypes.indexOf('pc') > -1)) || (query.matches && (banner.deviceTypes.indexOf('sp') > -1))">
+            <img [style.height.px]="carouselImageHeight" [src]="'./../../../'+ banner.bannerImageLocation">
+          </div>
+        </ngx-item>
+        <button class="left" NgxCarouselPrev mat-button><mat-icon>chevron_left</mat-icon></button>
+        <button class="right" NgxCarouselNext mat-button><mat-icon>chevron_right</mat-icon></button>
+      </ngx-carousel>
+      <span [ngClass]="currentBanner.bannerTextStyle" class="banner-text" >{{currentBanner.bannerTextCode | translate}}</span>
+    </mat-grid-tile>
+  </mat-grid-list> -->
+
+<div [@ProfileHomeIntroAnimation]="query.matches" class="home-content">
+  <div class="intro-text" [ngClass]="{ mobile: query.matches }">
+    <!-- <p-scrollPanel [style]="{width: '100%', height: '100%'}">
+          </p-scrollPanel> -->
+    <div>
+      {{ "profile.home.intro" | translate }}
+      <span class="visitor-info-link" (click)="openVistorInfoSheet()">{{
+        "profile.home.get-info" | translate
+      }}</span>
+    </div>
+  </div>
+  <div *ngIf="!query.matches" class="profile-image">
+    <img mat-card-image src="./../../../assets/images/profile/Rajesh.jpg" />
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.org-structure {
+  display: flex;
+  .org-projects {
+    width: 50%;
+    mat-list-item {
+    cursor: pointer;
+    }
+  }
+  .org-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 50%;
+  }
+}
+
+
+ .work-period {
+  color: black;
+}
+::ng-deep .fieldset {
+  background: ghostwhite;
+  .ui-fieldset-legend {
+    background-color: whitesmoke;
+    a {
+      color: cadetblue;
+      text-decoration: none;
+      p-header span {
+        color: lightseagreen;
+      }
+  }
+}
+}
+  
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}

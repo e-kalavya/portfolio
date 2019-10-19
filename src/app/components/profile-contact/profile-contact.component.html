@@ -1,0 +1,40 @@
+<mat-accordion class="contact-accordion">
+    <mat-expansion-panel expanded="true">
+      <mat-expansion-panel-header class="contact-headers-align">
+        <mat-panel-title translate>profile.contact.cellular.title</mat-panel-title>
+        <mat-panel-description><span></span><mat-icon>call</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div matExpansionPanelContent>
+        <mat-grid-list [cols]="query.matches?1:2" [rowHeight]="query.matches?'4:1':'8:1'">
+          <mat-grid-tile *ngFor="let contactNum of contact.contactDetails.contactNumber">
+            <mat-form-field class="contact-fields">
+                <mat-label translate>{{contactNum.numberCode}}</mat-label>
+                <input type="text" matInput readonly [value]="contactNum.number" />
+              </mat-form-field>
+              <button mat-icon-button ngxClipboard [cbContent]="contactNum.number" (cbOnSuccess)="clipboardCopied(contactNum.number)"><mat-icon>content_copy</mat-icon></button>
+          </mat-grid-tile>
+        </mat-grid-list>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header class="contact-headers-align">
+              <mat-panel-title translate>profile.contact.online.title</mat-panel-title>
+              <mat-panel-description><span></span><mat-icon>contact_mail</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div matExpansionPanelContent>
+              <mat-grid-list [cols]="query.matches?1:2" [rowHeight]="query.matches?'4:1':'8:1'">
+                <mat-grid-tile *ngFor="let contactLink of contact.contactDetails.contactLinks">
+                  <mat-form-field class="contact-fields">
+                      <mat-label translate>{{contactLink.typeCode}}</mat-label>
+                      <input type="text" matInput readonly [value]="contactLink.link" />
+                    </mat-form-field>
+                    <button mat-icon-button ngxClipboard [cbContent]="contactLink.link" (cbOnSuccess)="clipboardCopied(contactLink.link)"><mat-icon>content_copy</mat-icon></button>
+                </mat-grid-tile>
+              </mat-grid-list>
+                </div>
+              </mat-expansion-panel>
+      </mat-accordion>
+<app-profile-address-on-map></app-profile-address-on-map>
+

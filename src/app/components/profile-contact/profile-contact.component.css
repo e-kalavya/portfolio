@@ -1,0 +1,21 @@
+mat-accordion.mat-accordion.contact-accordion {
+  width: 95%;
+}
+
+.contact-accordion .mat-expansion-panel {
+  margin: 20px;
+}
+
+.contact-headers-align .mat-expansion-panel-header-title,
+.contact-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.contact-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-fields {
+  width: 70%;
+}

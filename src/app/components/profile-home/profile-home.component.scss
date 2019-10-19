@@ -1,0 +1,189 @@
+span.banner-text {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    margin: 0px 50px;
+    padding: 5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.text-top-left {
+        display: flex;
+        align-items: flex-start;
+    }
+    &.text-top-center {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 25px;
+    }
+    &.text-bottom-left {
+        display: flex;
+        align-items: flex-end;
+    }
+    &.text-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    &.text-top-right {
+        display: flex;
+        align-items: flex-end;
+    }
+    &.text-right-center {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    &.text-right-bottom {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+    }
+    &.text-left-center {
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+    }
+    &.text-brown {
+        color: brown;
+    }
+    &.text-darkgreen {
+        color: darkgreen;
+    }
+    &.text-cornsilk {
+        color: cornsilk;
+    }
+}
+.home-content {
+    display: flex;
+    overflow-y: scroll;
+    background-color: whitesmoke;
+    .intro-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 200%;
+        text-shadow: 1px 1px 2px #3f51b5;
+        text-indent: 10%;
+        padding: 3%;
+        span.visitor-info-link {
+            color: darkcyan;
+            font-size: 90%;
+            cursor: pointer;
+            transition: font-size 0.2s linear;
+            &:hover {
+                font-size: 100%;
+            }
+        }
+    }
+    .intro-text.mobile {
+        overflow-y: scroll;
+    }
+    .profile-image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 60%;
+            transition: width .3s ease-in-out, border .3s ease-in-out;
+            &:hover {
+                width: 63%;
+                border: 2px solid aliceblue;
+            }
+        }
+    }
+
+}
+
+
+.mat-grid-list .mat-grid-tile .profile-image {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .mat-grid-list .mat-grid-tile .profile-image img{
+    width: 60%;
+    border-radius: 12%;
+  }
+
+  /* carousel */
+
+  ngx-carousel {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    button {
+        transition: box-shadow 0.3s ease-in;
+        border-radius: 999px;
+        height: 40px;
+        &:hover {
+            box-shadow: 1px 0px 10px 1px darkgray;
+        }
+        mat-icon {
+            color: indigo;
+        }
+        &.left {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        width: 50px;
+        left: 5px;
+        }
+        &.right {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        width: 50px;
+        right: 5px;
+        }
+    }
+  }
+
+  :host ::ng-deep .ngxcarousel[_ngcontent-c14], :host ::ng-deep .ngxcarousel[_ngcontent-c14] .ngxcarousel-inner[_ngcontent-c14] {
+    height: 100%;
+  }
+
+  ngx-item img {
+    width: 100%;
+    height: 100%;
+  }
+  
+
+
+  mat-grid-list mat-grid-tile .mat-card.profile-card img {
+    margin-top: 25px;
+  }
+
+   .mat-grid-tile.info-tile .mat-card {
+     width: 100%;
+     height: 100%;
+   }
+
+   .mat-grid-tile.info-tile .tile-title {
+     font-weight: 700;
+   }
+
+   .mat-grid-tile.info-tile .mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80%;
+   }
+
+   .mat-grid-tile.info-tile .mat-card-content .mat-form-field {
+    width: 100%;
+   }

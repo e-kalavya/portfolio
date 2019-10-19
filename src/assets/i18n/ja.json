@@ -1,0 +1,111 @@
+{
+  "profile": {
+    "home": {
+      "title": "ラージェーシュ　スンダラム",
+      "firstname": "ラージェーシュ",
+      "lastname": "スンダラム",
+      "intro": "こんにちは、私の名前はラージェーシユです。私は世界中で利用可能なフリーランサーのJavaアプリケーション開発者です。J2EEとアングラーでWebアプリケーションの開発経験が豊富です。ここでは、ますます開発続けるウェブ作品のポートフォリオを見つけることができます。あなたが見たものが好きなら、あなたについて",
+      "get-info": "私に知らせてください。"
+    },
+    "menu.collapse": "縮める",
+    "main": {
+      "title": "ホーム",
+      "ask-me": "私に聞いて"
+    },
+    "personal": {
+      "title": "私について",
+      "items": {
+        "name": "ラージェーシュ　スンダラム",
+        "work": "Javaアプリの開発者",
+        "company": "富士通、インド",
+        "email": "tzrajesh7@gmail.com",
+        "mobile": "9174-1844-8779"
+      },
+      "labels": {
+        "name": "名前",
+        "work": "役割",
+        "company": "会社",
+        "email": "メールアドレス",
+        "mobile": "電話番後"
+      }
+    },
+    "banner": {
+      "introduction": "私の公式サイトへようこそ。よろしくお願いいたします。",
+      "experience": "Java/J2EEおよびAngularアプリケーション開発経験",
+      "quote1": "成功は最終的なものではありません。失敗は致命的ではない。それを継続することは勇気である。",
+      "quote2": "偉大な人のために行くことを諦めるのを恐れないでください。"
+    },
+    "academic": {
+      "college": {
+        "degree": "コンピュータ科学と工学",
+        "description": "コンピュータプログラミングに焦点を当てた",
+        "period-label": "年",
+        "period": "2011年から2015年まで",
+        "university-label": "大学",
+        "university": "アンナ大学、チェンナイ",
+        "percentage-label": "パーセンテージ",
+        "percentage": "71%",
+        "specialization-label": "専門分野",
+        "specialization": "Javaのプログラミング"
+      },
+      "hsc": {
+        "degree": "コンピュータ科学",
+        "description": "C と C++ プログラミング",
+        "period-label": "年",
+        "period": "2009年から2011年まで",
+        "university-label": "学校",
+        "university": "政府高等学校、チェンナイ",
+        "percentage-label": "パーセンテージ",
+        "percentage": "84%",
+        "specialization-label": "専門分野",
+        "specialization": "プログラミング"
+      }
+    },
+    "contact": {
+      "cellular": {
+        "title": "連絡先",
+        "mobile": "プライマリ番号",
+        "alternate": "代替番号"
+      },
+      "online": {
+        "title": "ソーシャル",
+        "mailId": "メールアドレス",
+        "skype": "Skypeアドレス",
+        "gplus": "Google Plus",
+        "facebook": "Facebook ID",
+        "twitter": "Twitter ID"
+      }
+    },
+    "certificates": {
+      "n3": {
+        "name": "日本語の能力試験",
+        "level-label": "レベル",
+        "level": "三級",
+        "year-label": "完了年",
+        "year": "2016年12月",
+        "knowledge-label": "言語知識",
+        "speak": "話せる",
+        "read": "読める",
+        "write": "書ける"
+      }
+    },
+    "org-projects": {
+      "fujitsu": {
+        "period": "（{{fromMonth}}月{{fromYear}}年から{{toMonth}}月{{toYear}}年まで）",
+        "project": {
+          "period":"{{fromMonth}}月{{fromYear}}年から{{toMonth}}月{{toYear}}年まで"
+        }
+      }
+    },
+    "personal-projects": {
+      "label": " 個人能力向上プロジェクト"
+    }
+  },
+  "sideMenu": {
+    "home.home": "ホームページ",
+    "home.academic": "アカデミック",
+    "home.certifications": "資格",
+    "home.projects": "プロジェクト",
+    "home.contact": "コンタクト"
+  }
+}

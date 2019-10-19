@@ -1,0 +1,79 @@
+<div class="content" > <!-- [style.marginTop.px]="query.matches ? 56 : 0" -->
+  <mat-sidenav-container (swipeLeft)="sidenavstate?profileMenu.close(): ''" [ngStyle]="{'top.px': query.matches?'-4':'0'}" >
+  <mat-sidenav [@AnimateOnFirstLoad]="sidenavstate" (@AnimateOnFirstLoad.done)="denySideNavAnimation($event)"  #profileMenu appShrinkableMatList
+  [shrinkState]="isSideNavShrinked" [isSideNavOpen]="sidenavstate" [isMobile]="query.matches" #sideNav (openedChange)="sidenavOpen($event)" (window:resize)="screenSizeChanges()" role="navigation" [mode]="query.matches? isSideNavShrinked?'side':'over' : 'side'" [opened]="query.matches? sidenavstate?true:false : true"
+  fixedInViewport="true" [ngStyle]="{'width': !isSideNavShrinked? query.matches?'70%':'15%' : query.matches?'65px':'70px'}" [fixedTopGap]="query.matches ? isSideNavShrinked?56:0 : 60" >
+  <div [ngClass]="{'allow-animate': isFirstTimeLoad, 'profile-sidenav-image-container': query.matches}" *ngIf="query.matches && !isSideNavShrinked">
+    <img [ngClass]="{'profile-sidenav-image': query.matches, 'mobile': query.matches}" src="./../../../assets/images/profile/Rajesh.jpg">
+  </div>
+    <mat-nav-list [ngClass]="{'allow-animate': isFirstTimeLoad, 'shrink-nav': isSideNavShrinked }" [class.allow-animate]="isFirstTimeLoad">
+      <mat-list-item (click)="(query.matches && !isSideNavShrinked )?profileMenu.close(): ''" [routerLink]="menu.menuRouterLink" routerLinkActive="active-item" *ngFor="let menu of sideNavMenu">
+        <a matLine (click)="profileService.setTitle(menu.menuCode)">{{ menu.menuCode | translate }}</a>
+        <button mat-icon-button><mat-icon>{{menu.menuIcon}}</mat-icon></button>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list [ngClass]="{'allow-animate': isFirstTimeLoad, 'shrinkable-nav-list': landscape.matches }">
+      <mat-divider></mat-divider>
+      <mat-list-item (click)="isSideNavShrinked = !isSideNavShrinked">
+          <a matLine translate>profile.menu.collapse</a>
+          <button mat-icon-button>
+            <mat-icon *ngIf="!isSideNavShrinked;else shrinked">fast_rewind</mat-icon>
+            <ng-template #shrinked>
+              <mat-icon>fast_forward</mat-icon>
+            </ng-template>
+          </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content (swipeRight)="!isSideNavShrinked?profileMenu.open():isSideNavShrinked=!isSideNavShrinked" #mainContent [ngStyle]="{'margin-left': !isSideNavShrinked? query.matches?'40%':'15%' : query.matches?'60px':'70px' }">
+      <div class="header" [ngClass]="{'animate-first-time': isFirstTimeLoad}">
+          <mat-toolbar color="primary">
+            <span>
+                <button mat-icon-button (click)="profileMenu.toggle()"><mat-icon>menu</mat-icon></button>
+                <!-- <button mat-icon-button (click)="profileMenu.toggle()"><mat-icon>{{sidenavstate?'close':'menu'}}</mat-icon></button> -->
+            </span>
+            <span *ngIf="query.matches">
+              <mat-label>{{ profileService.currentTitle | async | translate}}</mat-label>
+            </span>
+            <span *ngIf="!query.matches">
+              <button mat-button (click)="router.navigate(['/home'])"> {{'profile.main.title' | translate }}</button>
+            </span>
+            <!-- <span *ngIf="!query.matches">
+              <button (click)="openBot()" mat-button> {{'profile.main.ask-me' | translate }}</button>
+            </span> -->
+            <span class="spacer"></span>
+            <!-- <span *ngIf="!query.matches" class="profile-user-menu">
+                <img class="profile-image" [ngClass]="{'mobile': query.matches}" src="./../../../assets/images/profile/Rajesh.jpg">
+              </span> -->
+            <span class="i18n-lang-select">
+                <!-- <app-lang-select></app-lang-select> -->
+              <div *ngIf="query.matches; then mobileLangSelect else desktopLangSelect"></div>
+              <ng-template #desktopLangSelect>
+                <app-lang-select></app-lang-select>
+              </ng-template>
+              <ng-template #mobileLangSelect>
+                <mat-form-field color="primary">
+                  <!-- <img class="flag-image" [src]="lang===i18nVal.languages.ja.key?'./../../../assets/images/i18nFlags/flag_japan.png':'./../../../assets/images/i18nFlags/flag_india.png'" /> -->
+                  <mat-select (openedChange)="resizeOverlayPane($event)" #langSelect color="primary" [(ngModel)]="lang" [value]="i18n.currentLang" panelClass="i18n-lang-select-panel">
+                    <mat-option [disabled]="i18n.currentLang===i18nVal.languages.ja.key" (click)="i18n.use(i18nVal.languages.ja.key)" [value]="i18nVal.languages.ja.key"><img class="flag-image" src="./../../../assets/images/i18nFlags/flag_japan.png" />{{i18nVal.languages.ja.value}}</mat-option>
+                    <mat-option [disabled]="i18n.currentLang===i18nVal.languages.en.key" (click)="i18n.use(i18nVal.languages.en.key)" [value]="i18nVal.languages.en.key"><img class="flag-image" src="./../../../assets/images/i18nFlags/flag_india.png" />{{i18nVal.languages.en.value}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </ng-template>
+            </span>
+          </mat-toolbar>
+        </div>
+        <div class="content-section">
+          <router-outlet></router-outlet>
+        </div>
+        <!-- <div class="footer">
+          <mat-toolbar color="primary">
+            <nav>
+                <a href="https://myprofile-dab38.firebaseapp.com">©myprofile-dab38</a>
+                <a href="/about" >AboutMe</a>
+              </nav>
+          </mat-toolbar>
+          </div> -->
+        </mat-sidenav-content>
+        </mat-sidenav-container>
+      </div>

@@ -1,0 +1,111 @@
+{
+  "profile": {
+    "home": {
+      "title": "Rajesh Sundaram",
+      "firstname": "Rajesh",
+      "lastname": "Sundaram",
+      "intro": "Hi, My name is Rajesh.I am a freelance full stack java application developer available worldwide. Highly experienced in developing J2EE and angular web applications. Here you will find ever growing portfolio of web work. Feel free to look around and if you like what you see, ",
+      "get-info": "Please be in touch."
+    },
+    "menu.collapse": "Collapse",
+    "main": {
+      "title": "Home",
+      "ask-me": "AskMe"
+    },
+    "personal": {
+      "title": "About Me",
+      "items": {
+        "name": "Rajesh Sundaram",
+        "work": "Java Application Developer",
+        "company": "Fujitsu India Private Limited",
+        "email": "tzrajesh7@gmail.com",
+        "mobile": "+81 7048180209"
+      },
+      "labels": {
+        "name": "Name",
+        "work": "Role",
+        "company": "Company",
+        "email": "Email ID",
+        "mobile": "Contact Number"
+      }
+    },
+    "banner": {
+      "introduction": "Hi, welcome to my official website.",
+      "experience": "Experienced in Java/J2EE & Angular Application Development",
+      "quote1": "Success is not final. failure is not fatal.It is the courage to continue that counts.",
+      "quote2": "Don't be afraid to give up the good to go for the great."
+    },
+    "academic": {
+      "college": {
+        "degree": "B.E Computer Science and Engineering",
+        "description": "focused in Computer programming",
+        "period-label": "Year",
+        "period": "2011-2015",
+        "university-label": "University",
+        "university": "Anna University, Chennai",
+        "percentage-label": "Percentage",
+        "percentage": "71%",
+        "specialization-label": "Specialization",
+        "specialization": "Java Programming"
+      },
+      "hsc": {
+        "degree": "Computer Science",
+        "description": "C & C++ programming",
+        "period-label": "Year",
+        "period": "2009-2011",
+        "university-label": "School",
+        "university": "Sundaram Government Higher Secondary School, Chennai",
+        "percentage-label": "Percentage",
+        "percentage": "84%",
+        "specialization-label": "Specialization",
+        "specialization": "Programming"
+      }
+    },
+    "contact": {
+      "cellular": {
+        "title": "Contact Number",
+        "mobile": "Primary Number",
+        "alternate": "Alternate Number"
+      },
+      "online": {
+        "title": "Social",
+        "mailId": "E-Mail",
+        "skype": "Skype ID",
+        "gplus": "Google Plus",
+        "facebook": "Facebook ID",
+        "twitter": "Twitter ID"
+      }
+    },
+    "certificates": {
+      "n3": {
+        "name": "Japanese Language Proficiency Test",
+        "level-label": "Level",
+        "level": "N3",
+        "year-label": "Year of Completion",
+        "year": "December 2016",
+        "knowledge-label": "Language Knowledge",
+        "speak": "Speak",
+        "read": "Read",
+        "write": "Write"
+      }
+    },
+    "org-projects": {
+      "fujitsu": {
+        "period": "({{fromMonth}} {{fromYear}} - {{toMonth}} {{toYear}})",
+        "project": {
+          "period":"{{fromMonth}} {{fromYear}} - {{toMonth}} {{toYear}}"
+        }
+      }
+    },
+    "personal-projects": {
+      "label": " Personal Skill Enhancement"
+    }
+  },
+  "sideMenu": {
+    "home.home": "Home",
+    "home.academic": "Academic",
+    "home.certifications": "Certifications",
+    "home.projects": "Projects",
+    "home.contact": "Contact"
+  }
+}

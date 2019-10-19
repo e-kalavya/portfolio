@@ -1,0 +1,136 @@
+<mat-tab-group color="accent" backgroundColor="primary">
+  <mat-tab label="Flashcards">
+    <div>
+        <mat-expansion-panel color="primary" #settingsPanel class="card_settings_panel" expanded="false" hideToggle="true" (opened)="setting_state='remove'" (closed)="setting_state='add'">
+            <mat-expansion-panel-header [expandedHeight]="'48px'">
+              <mat-panel-title>
+                <mat-icon [@ShrinkExtractAnime]="setting_state">{{setting_state}}</mat-icon>&nbsp;<span class="expansion-label">Settings</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-grid-list cols="4" rowHeight="60px">
+                <mat-grid-tile>Group By</mat-grid-tile>
+                <mat-grid-tile colspan="2">
+                  <mat-radio-group class="radio-group" [(ngModel)]="card_settings.currentGroup" (change)="checkOption($event,selectByGroup)">
+                      <mat-radio-button *ngFor="let group of card_settings.availableGroups" [checked]="card_settings.currentGroup===group" class="radio-button"
+                      [value]="group">{{group}}</mat-radio-button>
+                    </mat-radio-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="1" [style.visibility]="(card_settings.currentGroup===card_settings.availableGroups[1] || card_settings.currentGroup===card_settings.availableGroups[2])?'visible':'hidden'">
+                    <mat-form-field class="select-by-group">
+                        <mat-select
+                         #selectByGroup multiple disableRipple="true"
+                        [required]="card_settings.currentGroup===card_settings.availableGroups[1] || card_settings.currentGroup===card_settings.availableGroups[2]"
+                          [disabled]="(card_settings.currentGroup===card_settings.availableGroups[1] || card_settings.currentGroup===card_settings.availableGroups[2])?'false':'true'"
+                          [placeholder]="card_settings.currentGroup===card_settings.availableGroups[2]?'Select Language':'Select TangoGroup'"
+                          #selectedGroupItems="ngModel" [(ngModel)]="card_settings.selectedGroupItems">
+                          <div *ngIf="card_settings.currentGroup===card_settings.availableGroups[2];then translateGroupOptions;else tangorinGroupOptions"></div>
+                          <ng-template #translateGroupOptions>
+                            <mat-optgroup label="From => To">
+                              <mat-option *ngFor="let group of card_settings.allGroups[1].langFromTo" [value]="group">
+                                {{group[0]+' => '+ group[1]}}
+                              </mat-option>
+                            </mat-optgroup>
+                          </ng-template>
+                          <ng-template #tangorinGroupOptions>
+                            <mat-optgroup *ngFor="let group of card_settings.allGroups" [label]="group.name"
+                                          [disabled]="group.disabled">
+                              <mat-option *ngFor="let subgroup of group.subgroups" [value]="subgroup.value" [disabled]="subgroup.disabled">
+                                {{subgroup.viewValue}}
+                              </mat-option>
+                            </mat-optgroup>
+                          </ng-template>
+                        </mat-select>
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>Sort By</mat-grid-tile>
+                <mat-grid-tile colspan="3">
+                  <mat-radio-group class="radio-group" [(ngModel)]="card_settings.selectedSortBy">
+                      <mat-radio-button [checked]="card_settings.selectedSortBy===sortBy" *ngFor="let sortBy of card_settings.sortByOptions" class="radio-button" [value]="sortBy">{{sortBy}}</mat-radio-button>
+                    </mat-radio-group>
+                </mat-grid-tile>
+                <mat-grid-tile rowspan="2" [ngClass]="{'alert alert-danger':designSettings.showByOptionsError}">Shown Items</mat-grid-tile>
+                <ng-container *ngFor="let item of card_settings.showByOptions">
+                  <mat-grid-tile rowspan="2" style="width:100%" [colspan]="item==card_settings.showByOptions[1]?'2':'1'">
+                    <span style="margin-right: 10px;font-weight: 700">{{item.name}}</span>
+                    <mat-chip-list [multiple]="'true'" selectable>
+                      <mat-chip *ngFor="let listItem of item.items" [selected]="listItem.isSelected" color="accent" (click)="listItem.isSelected=!listItem.isSelected">{{listItem.name}}</mat-chip>
+                    </mat-chip-list>
+                </mat-grid-tile>
+              </ng-container>
+              <mat-grid-tile colspan="3">
+                <div class="alert alert-danger" *ngIf="designSettings.showByOptionsError">
+                    Atleast one of the items of each group in shown items has to be checked
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <button mat-raised-button [disabled]="selectedGroupItems.errors!=null" color="primary" (click)="getFilteredData(settingsPanel)">Apply</button>
+              </mat-grid-tile>
+              </mat-grid-list>
+            </mat-expansion-panel>
+            <!-- search condtions ended -->
+            <div class="main-container">
+              <div *ngIf="show_flashcard;then flashcard; else spinner;"></div>
+              <ng-template #spinner>
+                <div class="spinner-container">
+                    <mat-spinner [color]="designSettings.spinnerColor"></mat-spinner>
+                </div>
+              </ng-template>
+              <ng-template #flashcard>
+                <div class="flashcard-container">
+                  <mat-card class="card-item" *ngIf="filteredRecords.length > 0">
+                    <mat-card-header>
+                      <mat-card-title>{{filteredRecords[index].groupIds}}</mat-card-title>
+                      <mat-card-subtitle>{{filteredRecords[index].itemType}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content (swipeleft)="changeIndex('forward')" (swiperight)="changeIndex('backward')">
+                      <mat-grid-list cols="8" rowHeight="70px">
+                        <mat-grid-tile rowspan="3">
+                          <button [disabled]="index==0" mat-icon-button color="primary" (click)="changeIndex('backward')"><mat-icon>arrow_back_ios</mat-icon></button>
+                        </mat-grid-tile>
+                        <mat-grid-tile colspan="6" rowspan="3">
+                          <mat-list dense>
+                            <div *ngIf="(filteredRecords[index].itemType === 'tangorin'); then tangorin; else translate;"></div>
+                          <ng-template #tangorin>
+                              <mat-list-item *ngIf="card_settings.showByOptions[0].items[0].isSelected">
+                                <button ngxClipboard [cbContent]="filteredRecords[index].reading" mat-mini-fab color="primary">R</button><span class="list-text">{{ filteredRecords[index].reading }}</span>
+                              </mat-list-item>
+                              <mat-list-item *ngIf="card_settings.showByOptions[0].items[1].isSelected">
+                                <button ngxClipboard [cbContent]="filteredRecords[index].writing" mat-mini-fab color="accent">W</button><span class="list-text">{{ filteredRecords[index].writing }}</span>
+                              </mat-list-item>
+                              <mat-list-item *ngIf="card_settings.showByOptions[0].items[2].isSelected">
+                                <button ngxClipboard [cbContent]="filteredRecords[index].meaningList" mat-mini-fab color="warn">M</button>
+                                <span class="list-text">
+                                <mat-chip-list>
+                                    <mat-chip *ngFor="let meaning of filteredRecords[index].meaningList" removable="true">{{meaning}}</mat-chip>
+                                  </mat-chip-list>
+                                </span>
+                              </mat-list-item>
+                          </ng-template>
+                          <ng-template #translate>
+                              <mat-list-item  *ngIf="card_settings.showByOptions[1].items[0].isSelected">
+                                <button ngxClipboard [cbContent]="filteredRecords[index].fromWord" mat-mini-fab color="primary">{{ filteredRecords[index].langFrom }}</button><span class="list-text">{{ filteredRecords[index].fromWord }}</span>
+                              </mat-list-item>
+                              <mat-list-item  *ngIf="card_settings.showByOptions[1].items[1].isSelected">
+                                <button ngxClipboard [cbContent]="filteredRecords[index].toWord" mat-mini-fab color="accent">{{ filteredRecords[index].langTo }}</button><span class="list-text">{{ filteredRecords[index].toWord }}</span>
+                              </mat-list-item>
+                          </ng-template>
+                        </mat-list>
+                        </mat-grid-tile>
+                        <mat-grid-tile rowspan="3">
+                            <button [disabled]="index==filteredRecords.length-1" mat-icon-button color="primary" (click)="changeIndex('forward')"><mat-icon>arrow_forward_ios</mat-icon></button>
+                        </mat-grid-tile>
+                      </mat-grid-list>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <!-- <button mat-button>LIKE</button>
+                      <button mat-button>SHARE</button> -->
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+              </ng-template>
+            </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Dictionary"> Dictionary </mat-tab>
+  <mat-tab label="Import/Export"> Import/Export </mat-tab>
+</mat-tab-group>

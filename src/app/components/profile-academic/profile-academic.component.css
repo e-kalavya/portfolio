@@ -1,0 +1,21 @@
+mat-accordion.mat-accordion.academic-accordion {
+  width: 95%;
+}
+
+.academic-accordion .mat-expansion-panel {
+  margin: 20px;
+}
+
+.academic-headers-align .mat-expansion-panel-header-title,
+.academic-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.academic-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.academic-fields {
+  width: 90%;
+}

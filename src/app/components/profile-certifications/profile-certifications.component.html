@@ -1,0 +1,71 @@
+<mat-list>
+  <mat-list-item>
+    <mat-radio-group ngClass="skill-group" [(ngModel)]="currentGroup" (change)="updateScreen($event)">
+      <mat-radio-button *ngFor="let group of skills.groups" [value]="group">
+        {{group.name}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  <ng-container *ngIf="skills.groups[1]===currentGroup">
+    開発中です。
+    <!-- <ng-container *ngFor="let skills of certficates.programmingSkills">
+        <p>{{skills.category}}</p>
+        <ng-container *ngFor="let lang of skills.langsAndFrameworks">
+          <span>{{lang.name}}</span>
+          <span><p-slider [styleClass]="lang.styleClass" [(ngModel)]="lang.level" [disabled]="true" ></p-slider></span>
+          <span>{{lang.level}}%</span>
+        </ng-container>
+      </ng-container> -->
+  </ng-container>
+</mat-list>
+<p-chart *ngIf="chart.type && skills.groups[0]===currentGroup" [type]="chart.type" [data]="chart.data"></p-chart>
+
+
+
+
+
+
+<div class="certificates-list">
+
+
+
+  <!-- <mat-expansion-panel expanded="true" *ngFor="let certificate of certficates.certificates">
+  <mat-expansion-panel-header class="contact-headers-align">
+    <mat-panel-title translate>{{certificate.titleCode}}</mat-panel-title>
+  </mat-expansion-panel-header>
+  <div matExpansionPanelContent>
+    <mat-grid-list [cols]="query.matches?1:4" [rowHeight]="query.matches?'4:1':'6:1'">
+      <mat-grid-tile [colspan]="query.matches?1:3">
+        <span class="label">
+          {{certificate.levelLabel | translate}}
+        </span>
+        <span class="value">
+          {{certificate.level | translate}}
+        </span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="query.matches?1:3">
+          <span class="label">
+            {{certificate.yearLabel | translate}}
+          </span>
+          <span class="value">
+            {{certificate.year | translate}}
+          </span>
+        </mat-grid-tile>
+      <mat-grid-tile [colspan]="query.matches?1:3">
+            <span class="label" translate>
+              profile.certificates.n3.knowledge-label
+            </span>
+            <span class="value">
+                <mat-checkbox checked="true" readonly ng-readonly>{{'profile.certificates.n3.speak' | translate}}</mat-checkbox>
+                <mat-checkbox checked="true" >{{'profile.certificates.n3.read' | translate}}</mat-checkbox>
+                <mat-checkbox checked="true" >{{'profile.certificates.n3.write' | translate}}</mat-checkbox>
+            </span>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+      </div>
+    </mat-expansion-panel> -->
+  </div>
+
+

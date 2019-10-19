@@ -1,0 +1,77 @@
+<mat-list>
+  <p-fieldset styleClass="fieldset" [toggleable]="true">
+    <p-header>{{ 'profile.personal-projects.label' | translate }}</p-header>
+  <div class="org-structure">
+    <div class="org-projects">
+      <mat-list-item *ngFor="let key of projectsConfig.personalProjects.keys()" (click)="openPersonalProject(projectsConfig.personalProjects.get(key).get(i18n.currentLang).path)">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{projectsConfig.personalProjects.get(key).get(i18n.currentLang).name}}</h4>
+        <p mat-line>{{projectsConfig.personalProjects.get(key).get(i18n.currentLang).description}}</p>
+      </mat-list-item>
+    </div>
+    </div>
+  </p-fieldset>
+  </mat-list>
+
+
+<mat-list *ngFor="let org of projectsConfig.projectByOrgs.get(i18n.currentLang) | projectsSort: 'org'">
+  <p-fieldset styleClass="fieldset" [toggleable]="true">
+    <p-header>
+    <!-- <h3 mat-subheader>  -->
+       {{org.organizationName}}
+      <span *ngIf="languages.en.key==i18n.currentLang" class="work-period">
+        {{ 'profile.org-projects.fujitsu.period'
+        | translate:{fromMonth:projectsConfig.monthNames[org.joinedDate.getMonth()].substring(0,3),
+          fromYear: org.joinedDate.getFullYear(),
+          toMonth: projectsConfig.monthNames[org.seperatedDate.getMonth()].substring(0,3),
+          toYear: org.seperatedDate.getFullYear()
+        }
+      }}
+      </span>
+      <span *ngIf="languages.ja.key==i18n.currentLang" class="work-period">
+        {{ 'profile.org-projects.fujitsu.period'
+        | translate:{fromMonth:org.joinedDate.getMonth()+1,
+          fromYear: org.joinedDate.getFullYear(),
+          toMonth: org.seperatedDate.getMonth()+1,
+          toYear: org.seperatedDate.getFullYear()
+        }
+      }}
+      </span>
+    <!-- </h3> -->
+  </p-header>
+  <div class="org-structure">
+    <div class="org-projects">
+      <mat-list-item *ngFor="let project of org.projects | projectsSort: 'project'" (click)="openProjectInfo(project)">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{project.name}}</h4>
+        <p mat-line *ngIf="languages.en.key==i18n.currentLang">
+            {{ 'profile.org-projects.fujitsu.project.period'
+            | translate:{fromMonth:projectsConfig.monthNames[project.startDate.getMonth()].substring(0,3),
+              fromYear: project.startDate.getFullYear(),
+              toMonth: projectsConfig.monthNames[project.endDate.getMonth()].substring(0,3),
+              toYear: project.endDate.getFullYear()
+            }
+          }}
+        </p>
+        <p mat-line *ngIf="languages.ja.key==i18n.currentLang">
+            {{ 'profile.org-projects.fujitsu.project.period' | translate:{
+              fromMonth: project.startDate.getMonth()+1,
+              fromYear: project.startDate.getFullYear(),
+              toMonth: project.endDate.getMonth()+1,
+              toYear: project.endDate.getFullYear()
+            }
+          }}
+          </p>
+        <!-- <p mat-line>{{projectsConfig.monthNames[project.startDate.getMonth()].substring(0,3)+' '+project.startDate.getFullYear()}}
+          {{' - '}}
+          {{projectsConfig.monthNames[project.endDate.getMonth()].substring(0,3)+' '+project.endDate.getFullYear()}}</p> -->
+      </mat-list-item>
+    </div>
+    <div class="org-image">
+        <img class="org-logo" [src]="'./../../../' + org.orgIcon" />
+    </div>
+    </div>
+      </p-fieldset>
+    <mat-divider class="org-seperator"></mat-divider>
+  </mat-list>
+

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+<span>
+  ChatMe
+</span>
+<span style="flex: 1 1 auto"></span>
+<span>
+  <mat-icon class="modal-close" (click)="dialogRef.close()">close</mat-icon>
+</span>
+</mat-toolbar>
+<div class="message-content" #messageContent [ngClass]="{'desktop': !query.matches, 'mobile': query.matches}" >
+    <!-- {{messageFieldHeight}} -->
+    <!-- [ngStyle]="{'height.px': messageFieldHeight}" -->
+    開発中です。
+</div>
+<mat-toolbar class="user-message-section">
+  <!-- <mat-form-field class="message-field">
+    <textarea  matInput></textarea>
+  </mat-form-field> -->
+  <textarea (keyup)="altKeyState=false" [(ngModel)]="userMessage" (onResize)="handleKeyEvents($event)" (keyup.enter)="message.valid?askBot(): ''" #message="ngModel" class="message-field" required minlength="1" pInputTextarea autoResize="true" [rows]="3" [cols]="30"></textarea>
+  <button [disabled]="message.invalid" (click)="askBot()" class="send-message-button" mat-mini-fab color="primary"><i class="fa fa-paper-plane"></i></button>
+</mat-toolbar>
