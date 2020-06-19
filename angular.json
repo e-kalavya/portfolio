@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/profileNg6",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -24,14 +25,20 @@
             ],
             "styles": [
               "src/styles.css",
-			        "src/profile-theme.scss"
+              "src/profile-theme.scss"
             ],
             "scripts": [
-			      "node_modules/chart.js/dist/Chart.min.js"
-      	    ]
+              "node_modules/chart.js/dist/Chart.min.js"
+            ]
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -121,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "profileNg6"
+  "defaultProject": "profileNg6",
+  "cli": {
+    "analytics": "8cafb70d-c145-446d-85e3-3fe7f1580dd1"
+  }
 }

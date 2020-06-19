@@ -1,5 +1,5 @@
-import { AngularFireModule } from "angularfire2";
-import { AngularFirestoreModule } from "angularfire2/firestore";
+// import { AngularFireModule } from "angularfire2";
+// import { AngularFirestoreModule } from "angularfire2/firestore";
 import { VisitorInfoComponent } from "./../../components/visitor-info/visitor-info.component";
 import { ProfileAcademicComponent } from "./../../components/profile-academic/profile-academic.component";
 import { ShrinkableMatListDirective } from "./../../directives/shrinkable-mat-list.directive";
@@ -7,15 +7,15 @@ import { ProfileVideoComponent } from "./../../components/profile-video/profile-
 import {
   TranslateModule,
   TranslateDirective,
-  TranslatePipe
+  TranslatePipe,
 } from "@ngx-translate/core";
 import { MediaMatcher } from "@angular/cdk/layout";
 import { MaterialModule } from "./../material/material.module";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HttpModule } from "@angular/http";
+// import { HttpModule } from "@angular/comm";
 // import { NgxCarouselModule } from 'ngx-carousel';
-import { RouterModule } from "@angular/router";
+// import { RouterModule } from "@angular/router";
 import { ProfileComponent } from "../../components/profile/profile.component";
 import "hammerjs";
 import { ProfileHomeComponent } from "../../components/profile-home/profile-home.component";
@@ -27,8 +27,8 @@ import { ProfileCertificationsComponent } from "../../components/profile-certifi
 import { ProfileProjectsComponent } from "../../components/profile-projects/profile-projects.component";
 import { ProfileProjectInfoComponent } from "../../components/profile-project-info/profile-project-info.component";
 import { ProfileAddressOnMapComponent } from "../../components/profile-address-on-map/profile-address-on-map.component";
-import { AgmCoreModule } from "@agm/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+// import { AgmCoreModule } from "@agm/core";
+// import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { environment } from "./../../../environments/environment";
 import { ChatBotComponent } from "../../components/chat-bot/chat-bot.component";
 import { ChatBotService } from "../../services/chat-bot.service";
@@ -47,18 +47,18 @@ import { VocabService } from "../../services/vocab.service";
     TranslateModule,
     // NgxCarouselModule,
     ClipboardModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // HttpModule,
     // RouterModule.forChild(ProfileRoutes)
-    RouterModule.forRoot(ProfileRoutes),
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapConfig.apiKey
-    }),
+    // RouterModule.forRoot(ProfileRoutes),
+    // AgmCoreModule.forRoot({
+    //   apiKey: environment.googleMapConfig.apiKey,
+    // }),
     PrimeNgModule,
     ChartModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule.enablePersistence()
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFirestoreModule.enablePersistence()
   ],
   declarations: [
     ProfileComponent,
@@ -76,7 +76,7 @@ import { VocabService } from "../../services/vocab.service";
     LangSelectComponent,
     ProjectsSortPipe,
     VisitorInfoComponent,
-    NihongoAnkiComponent
+    NihongoAnkiComponent,
   ],
   exports: [
     ProfileComponent,
@@ -90,16 +90,16 @@ import { VocabService } from "../../services/vocab.service";
     ProfileCertificationsComponent,
     RouterModule,
     ClipboardModule,
-    ReactiveFormsModule,
-    ChartModule
+    // ReactiveFormsModule,
+    ChartModule,
   ],
   providers: [MediaMatcher, ChatBotService, ProfileService, VocabService],
   entryComponents: [
     ProfileVideoComponent,
     ProfileProjectInfoComponent,
     ChatBotComponent,
-    VisitorInfoComponent
+    VisitorInfoComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProfileModule {}
