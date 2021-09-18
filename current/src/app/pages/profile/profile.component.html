@@ -1,0 +1,29 @@
+<portfolio-root-main>
+  <div class="profile-container">
+    <div class="row">
+      <div class="profile-photo-container col-sm-12 col-md-4">
+        <mat-card>
+          <img
+            mat-card-image
+            src="assets/images/profile_photo.jpg"
+            alt="Profile"
+          />
+          <mat-card-title>{{ profile.personal.name }}</mat-card-title>
+          <mat-card-content>
+            <div [innerHTML]="profile.description"></div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="profile-detail-container col-sm-12 col-md-8">
+        <mat-tab-group color="accent" backgroundColor="primary">
+          <mat-tab label="Personal" class="personal-profile-tab">
+            <portfolio-profile-personal></portfolio-profile-personal>
+          </mat-tab>
+          <mat-tab label="Skills">
+            <portfolio-skills></portfolio-skills>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</portfolio-root-main>

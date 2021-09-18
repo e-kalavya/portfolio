@@ -1,0 +1,35 @@
+<div class="profile-personal-container">
+  <mat-list *ngIf="profile">
+    <mat-list-item>
+      <div class="label">SkypeId</div>
+      <div class="value">{{ profile.personal.skypeId }}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <div class="label">E-Mail</div>
+      <div class="value">{{ profile.personal.emailId }}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <div class="label">Age</div>
+      <div class="value">{{ profileHelper.getAge() }}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <div class="label">Nationality</div>
+      <div class="value">{{ profile.personal.nationality }}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="extended">
+      <div class="label">Languages</div>
+      <div class="value">
+        <mat-chip-list ariaOrientation="horizontal">
+          <mat-chip *ngFor="let lang of profile.personal.languages">{{
+            lang
+          }}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

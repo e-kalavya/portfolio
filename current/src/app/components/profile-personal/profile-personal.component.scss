@@ -1,0 +1,20 @@
+@import 'src/styles';
+
+.profile-personal-container {
+  .mat-list-item {
+    // color: $PRIMARY_COLOR;
+    .label,
+    .value {
+      width: 50%;
+      text-align: start;
+      .mat-chip {
+        min-height: 18px;
+      }
+    }
+  }
+  .mat-list-item.extended {
+    @include media-breakpoint-down(sm) {
+      height: 58px;
+    }
+  }
+}

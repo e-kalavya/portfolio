@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a
+      class="toolbar-item hvr-grow hvr-shadow"
+      mat-flat-button
+      color="primary"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+    <a
+      class="toolbar-item hvr-grow hvr-shadow"
+      mat-flat-button
+      color="primary"
+      routerLink="/profile"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Profile</a
+    >
+    <!-- <a class="toolbar-item hvr-grow hvr-shadow" mat-flat-button color="primary" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Contact</a> -->
+    <span class="spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>

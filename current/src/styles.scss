@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~font-awesome/css/font-awesome.css';
+@import 'bootstrap';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+$PRIMARY_COLOR: #c2185b;
+$SECONDARY_COLOR: #303030;
+$TOOLBAR_ITEM_BACKGROUND_COLOR: silver;

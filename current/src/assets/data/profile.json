@@ -1,0 +1,15 @@
+{
+  "profile": {
+    "personal": {
+      "name": "Rajesh Sundaram",
+      "birthDate": "06/03/1994",
+      "emailId": "tzrajesh7@gmail.com",
+      "nationality": "Indian",
+      "skypeId": "rajeshsundaram7",
+      "languages": ["Tamil", "English", "Japanese"],
+      "image": "assets/images/profile_photo.jpg"
+    },
+    "description": "I'm a Versatile Full-Stack Application Developer with <b>$1+ years</b> of experience and has optimum excitement in using various technologies to Design, Develop and manage applications.",
+    "graduatedYear": 2015
+  }
+}

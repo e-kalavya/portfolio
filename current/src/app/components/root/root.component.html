@@ -1,0 +1,19 @@
+<div class="root-container">
+  <!-- TODO: sal style hides the element when displayed in position:absolute mode -->
+  <!-- <div data-sal="slide-up" data-sal-delay="300" data-sal-easing="ease-out-bounce">Hello Rajesh</div> -->
+  <portfolio-toolbar></portfolio-toolbar>
+  <!-- jumbotron -->
+  <div
+    class="root-content text-center d-flex flex-column justify-content-center"
+  >
+    <div
+      class="slideup-container"
+      [ngClass]="path"
+      data-sal="slide-up"
+      data-sal-delay="300"
+      data-sal-easing="ease-out-bounce"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

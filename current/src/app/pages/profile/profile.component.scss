@@ -1,0 +1,74 @@
+@import '~src/styles';
+
+$profile-border-radius: 5px;
+
+.zero-padding {
+  padding: 0;
+}
+
+.profile-photo-container {
+  @extend .d-flex, .align-items-center, .justify-content-center;
+  @extend .zero-padding;
+  .mat-card {
+    height: 100%;
+    background-color: $PRIMARY_COLOR;
+    border-radius: $profile-border-radius;
+    text-align: justify;
+    @extend .d-flex, .flex-column, .justify-content-center, .align-items-center;
+    .mat-card-image {
+      width: 100%;
+      margin-top: 0px;
+      border-radius: 3%;
+    }
+    .mat-card-title {
+      margin-top: 0px;
+    }
+  }
+}
+
+.profile-detail-container {
+  border: 5px solid $PRIMARY_COLOR;
+  border-radius: $profile-border-radius;
+  @extend .zero-padding;
+  .mat-tab-group {
+    max-height: 380px;
+    min-height: 300px;
+    ::ng-deep .mat-tab-body-content {
+      padding: 10px;
+      color: white;
+      .form-row {
+        padding-bottom: 1%;
+      }
+    }
+  }
+
+  .mat-tab .personal-profile-tab {
+    .badge-out {
+      margin: 0 10px;
+    }
+  }
+}
+
+.profile-container {
+  width: 80%;
+  @include media-breakpoint-up(sm) {
+    .profile-photo-container .mat-card {
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+    .profile-detail-container {
+      border-radius: 0px $profile-border-radius $profile-border-radius 0px;
+      border-left: none;
+      border-top: none;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .profile-detail-container {
+      margin-top: 10px;
+      border-color: #c2185b;
+      border-style: solid;
+      border-top: 0px;
+      border-width: 5px;
+    }
+  }
+}
