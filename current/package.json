@@ -45,6 +45,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "angular-cli-ghpages": "^1.0.0-rc.2",
     "codelyzer": "^5.1.2",
     "hover.css": "^2.3.2",
     "husky": "^4.2.3",
